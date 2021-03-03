@@ -1,7 +1,9 @@
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const meaningCloud = require('meaning-cloud');
 const dotenv = require('dotenv');
+
 
 dotenv.config();
 var textapi = new meaningCloud({
