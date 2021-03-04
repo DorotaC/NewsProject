@@ -12,6 +12,7 @@ function handleSubmit(event) {
       //     document.getElementById('results').innerHTML = res.message
       // })
       console.log('formHandler1')
+      //postURL('http://localhost:8081/postInput', {uInput: formText})
       postURL('/postInput', {uInput: formText})
       console.log({uInput: formText})
       console.log('formHandler2')

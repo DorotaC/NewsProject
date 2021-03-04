@@ -1,4 +1,4 @@
-import { checkForName } from './js/nameChecker'
+//import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
 import { urlToAnalyze } from './js/formHandler'
 import './styles/resets.scss'
@@ -12,7 +12,7 @@ import './styles/header.scss'
 // console.log("CHANGE!!");
 
 export {
-  checkForName,
+  //checkForName,
   handleSubmit,
   urlToAnalyze
 }
