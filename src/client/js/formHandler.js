@@ -1,6 +1,5 @@
 function handleSubmit(event) {
     event.preventDefault()
-
     // check what text was put into the form field
     let formText = document.getElementById('name').value
     //Client.checkForName(formText)
@@ -12,13 +11,13 @@ function handleSubmit(event) {
       //     document.getElementById('results').innerHTML = res.message
       // })
       console.log('formHandler1')
-      //postURL('http://localhost:8081/postInput', {uInput: formText})
-      postURL('/postInput', {uInput: formText})
+      postURL('http://localhost:8081/postInput', {uInput: formText})
+      //postURL('/postInput', {uInput: formText})
       console.log({uInput: formText})
       console.log('formHandler2')
     }
     else {
-      console.log('Please enter valid URL');
+      alert('Please enter valid URL');
     }
 }
 

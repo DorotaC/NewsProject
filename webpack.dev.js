@@ -10,8 +10,15 @@ module.exports = {
     stats: 'verbose',
     output: {
       libraryTarget: 'var',
-      library: 'Client'
+      library: 'Client',
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
     },
+    devServer: {
+      contentBase: path.join(__dirname, 'dist'),
+      compress: true,
+      port: 8080,
+      },
     module: {
         rules: [
             {
