@@ -14,17 +14,15 @@ function handleSubmit(event) {
        //.then(res => res.json())
        //.then(data => console.log(data))
        .then(function(res) {
-           document.getElementById('results').innerHTML = res.agreement
-           // document.getElementById('results').innerHTML = res.subjectivity
-           // document.getElementById('results').innerHTML = res.irony
-           //document.getElementById('results').innerHTML = res.subjectivity
+           document.getElementById('agreement').innerHTML = `Agreement score: ${res.agreement}`
+           document.getElementById('subjectivity').innerHTML = `Subjectivity score: ${res.subjectivity}`
+           document.getElementById('irony').innerHTML = `Irony score: ${res.irony}`
+           document.getElementById('confidence').innerHTML = `Confidence score: ${res.confidence}`
        })
-       // .then(function(data) {
-       //    updateUI(data)
-       //  }
-       //console.log(res)
-      //document.getElementById('results').innerHTML = res.agreement
-      //postURL('/postInput', {uInput: formText})
+       // .then(function(res) {
+       //   updateUI(res)
+       // })
+
       console.log({uInput: formText})
     } else {
        alert('Please enter valid URL');
@@ -53,14 +51,11 @@ const postURL = async (url = ' ', data = {}) => {
   };
 };
 
-const updateUI = async (newSata) => {
-  const req = await fetch('/');
-  try {
-    const reqData = await req.json();
-    console.log(reqData);
-  } catch(error) {
-    console.log(error);
-  }
+const updateUI = async (newsData) => {
+  document.getElementById('agreement').innerHTML = `Agreement score: ${res.agreement}`
+  document.getElementById('subjectivity').innerHTML = `Subjectivity score: ${res.subjectivity}`
+  document.getElementById('irony').innerHTML = `Irony score: ${res.irony}`
+  document.getElementById('confidence').innerHTML = `Confidence score: ${res.confidence}`
 }
 
 
