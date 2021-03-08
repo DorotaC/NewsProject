@@ -4,7 +4,6 @@ function handleSubmit(event) {
     let formText = document.getElementById('name').value
     //Client.checkForName(formText)
     if (urlToAnalyze (formText)) {
-      // console.log("::: Form Submitted :::")
       // fetch('http://localhost:8081/test')
       // .then(res => res.json())
       // .then(function(res) {
@@ -12,13 +11,16 @@ function handleSubmit(event) {
       // })
       console.log('formHandler1')
       postURL('http://localhost:8081/postInput', {uInput: formText})
+       //.then(res => res.json())
+       .then(function(data) {
+         updateUI(data)
+         //document.getElementById('results').innerHTML = res
+    })
       //postURL('/postInput', {uInput: formText})
       console.log({uInput: formText})
-      console.log('formHandler2')
-    }
-    else {
-      alert('Please enter valid URL');
-    }
+    } else {
+       alert('Please enter valid URL');
+     }
 }
 
 function urlToAnalyze (url){
@@ -42,6 +44,17 @@ const postURL = async (url = ' ', data = {}) => {
     console.log(error);
   };
 };
+
+const updateUI = async (newSata) => {
+  const req = await fetch('/');
+  try {
+    const reqData = await req.json();
+    console.log(reqData);
+  } catch(error) {
+    console.log(error);
+  }
+}
+
 
 export { handleSubmit }
 export { urlToAnalyze }

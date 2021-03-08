@@ -1,4 +1,5 @@
 var path = require('path')
+const fetch =require ('node-fetch')
 //const mockAPIResponse = require('./mockAPI.js')
 //const meaningCloud = require('meaning-cloud');
 
@@ -38,42 +39,46 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
-app.get('/postInput', function (req, res) {
-    //res.send(mockAPIResponse)
-    console.log('Test dziala')
-})
-
-app.post('/postInput', async function (req, res){
+app.post('/postInput', function (req, res){
     //let urlToGo = req.body.uInput;
     //console.log(urlToGo)
-    const response = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&url=${req.body.uInput}&lang=en`)
-    console.log(response)
+    const apiURL = `https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&url=${req.body.uInput}&lang=en`
+    //console.log(response)
     // try {
-    const dataAPI = await response.json()
-    console.log(dataAPI)
-    response.send(dataAPI)
+    //const dataAPI = await response.json()
+    //console.log(dataAPI)
+    //
     // } catch (error) {
     //   console.log(error)
     //   next(error)
     // }
-    //getDataFromAPI(apiURL)
-    //console.log(getDataFromAPI(apiURL))
+    const responseAPI = getDataFromAPI(apiURL)
+    //console.log(responseAPI)
+    res.send(responseAPI)
+    console.log('udało się')
+    //console.log(getDataFromAPI(apiURL).body)
     // .then(function(res) {
     //     document.getElementById('results').innerHTML = res.message
     // })
 })
 
-// const getDataFromAPI = async (connectAPI) => {
-//   const response = await fetch(apiURL)
-//   try {
-//     if(!response.ok){
-//       throw Error(response.statusText)
-//     }
-//     const dataAPI = await response.json()
-//     return dataAPI
-//     next()
-//   } catch (error) {
-//       console.log(error)
-//       next(error)
-//   }
-// }
+// app.get('/returnAPIOutput', function (req, res) {
+//     res.send(responseAPI)
+//     console.log('Test dziala')
+// })
+
+const getDataFromAPI = async (connectAPI) => {
+  const response = await fetch(connectAPI)
+  try {
+    if(!response.ok){
+      throw Error(response.statusText)
+    }
+    const dataAPI = await response.json()
+    //response.send(dataAPI)
+    return dataAPI
+    //next()
+  } catch (error) {
+      console.log(error)
+      //next(error)
+  }
+}
