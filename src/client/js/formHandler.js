@@ -12,10 +12,18 @@ function handleSubmit(event) {
       console.log('formHandler1')
       postURL('http://localhost:8081/postInput', {uInput: formText})
        //.then(res => res.json())
-       .then(function(data) {
-         updateUI(data)
-         //document.getElementById('results').innerHTML = res
-    })
+       //.then(data => console.log(data))
+       .then(function(res) {
+           document.getElementById('results').innerHTML = res.agreement
+           // document.getElementById('results').innerHTML = res.subjectivity
+           // document.getElementById('results').innerHTML = res.irony
+           //document.getElementById('results').innerHTML = res.subjectivity
+       })
+       // .then(function(data) {
+       //    updateUI(data)
+       //  }
+       //console.log(res)
+      //document.getElementById('results').innerHTML = res.agreement
       //postURL('/postInput', {uInput: formText})
       console.log({uInput: formText})
     } else {

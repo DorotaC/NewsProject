@@ -39,46 +39,44 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
-app.post('/postInput', function (req, res){
+app.post('/postInput', async function (req, res){
     //let urlToGo = req.body.uInput;
     //console.log(urlToGo)
     const apiURL = `https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&url=${req.body.uInput}&lang=en`
-    //console.log(response)
-    // try {
-    //const dataAPI = await response.json()
-    //console.log(dataAPI)
-    //
-    // } catch (error) {
-    //   console.log(error)
-    //   next(error)
-    // }
-    const responseAPI = getDataFromAPI(apiURL)
+    const responseAPI = await fetch(apiURL)
     //console.log(responseAPI)
-    res.send(responseAPI)
-    console.log('udało się')
+    try {
+      const dataAPI = await responseAPI.json()
+      //console.log(dataAPI.agreement)
+      res.send(dataAPI)
+      //return dataAPI
+    } catch(error) {
+      console.log(error)
+    }
+
+    //const responseAPI = getDataFromAPI(apiURL)
+    //console.log(responseAPI)
+    //res.send(responseAPI)
+    //onsole.log('udało się')
     //console.log(getDataFromAPI(apiURL).body)
     // .then(function(res) {
     //     document.getElementById('results').innerHTML = res.message
     // })
 })
 
-// app.get('/returnAPIOutput', function (req, res) {
-//     res.send(responseAPI)
-//     console.log('Test dziala')
-// })
 
-const getDataFromAPI = async (connectAPI) => {
-  const response = await fetch(connectAPI)
-  try {
-    if(!response.ok){
-      throw Error(response.statusText)
-    }
-    const dataAPI = await response.json()
-    //response.send(dataAPI)
-    return dataAPI
-    //next()
-  } catch (error) {
-      console.log(error)
-      //next(error)
-  }
-}
+// const getDataFromAPI = async (connectAPI) => {
+//   const response = await fetch(connectAPI)
+//   try {
+//     if(!response.ok){
+//       throw Error(response.statusText)
+//     }
+//     const dataAPI = await response.json()
+//     //response.send(dataAPI)
+//     return dataAPI
+//     //next()
+//   } catch (error) {
+//       console.log(error)
+//       //next(error)
+//   }
+// }
