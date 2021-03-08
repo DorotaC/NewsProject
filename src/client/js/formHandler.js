@@ -1,24 +1,17 @@
 function handleSubmit(event) {
     event.preventDefault()
-    // check what text was put into the form field
     let formText = document.getElementById('name').value
-    //Client.checkForName(formText)
     if (urlToAnalyze (formText)) {
-      // fetch('http://localhost:8081/test')
-      // .then(res => res.json())
-      // .then(function(res) {
-      //     document.getElementById('results').innerHTML = res.message
-      // })
       console.log('formHandler1')
       postURL('http://localhost:8081/postInput', {uInput: formText})
-       //.then(res => res.json())
-       //.then(data => console.log(data))
+      //Basic version
        .then(function(res) {
            document.getElementById('agreement').innerHTML = `Agreement score: ${res.agreement}`
            document.getElementById('subjectivity').innerHTML = `Subjectivity score: ${res.subjectivity}`
            document.getElementById('irony').innerHTML = `Irony score: ${res.irony}`
            document.getElementById('confidence').innerHTML = `Confidence score: ${res.confidence}`
        })
+       //Alternative version
        // .then(function(res) {
        //   updateUI(res)
        // })
@@ -51,7 +44,8 @@ const postURL = async (url = ' ', data = {}) => {
   };
 };
 
-const updateUI = async (newsData) => {
+//I can't make to work this function - "alternative version" from above
+const updateUI = (newsData) => {
   document.getElementById('agreement').innerHTML = `Agreement score: ${res.agreement}`
   document.getElementById('subjectivity').innerHTML = `Subjectivity score: ${res.subjectivity}`
   document.getElementById('irony').innerHTML = `Irony score: ${res.irony}`
