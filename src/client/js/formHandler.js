@@ -4,18 +4,9 @@ function handleSubmit(event) {
     if (urlToAnalyze (formText)) {
       console.log('formHandler1')
       postURL('http://localhost:8081/postInput', {uInput: formText})
-      //Basic version
        .then(function(res) {
-           document.getElementById('agreement').innerHTML = `Agreement score: ${res.agreement}`
-           document.getElementById('subjectivity').innerHTML = `Subjectivity score: ${res.subjectivity}`
-           document.getElementById('irony').innerHTML = `Irony score: ${res.irony}`
-           document.getElementById('confidence').innerHTML = `Confidence score: ${res.confidence}`
+         updateUI(res)
        })
-       //Alternative version
-       // .then(function(res) {
-       //   updateUI(res)
-       // })
-
       console.log({uInput: formText})
     } else {
        alert('Please enter valid URL');
@@ -44,12 +35,12 @@ const postURL = async (url = ' ', data = {}) => {
   };
 };
 
-//I can't make to work this function - "alternative version" from above
+//Function that put the results of analysis on the website
 const updateUI = (newsData) => {
-  document.getElementById('agreement').innerHTML = `Agreement score: ${res.agreement}`
-  document.getElementById('subjectivity').innerHTML = `Subjectivity score: ${res.subjectivity}`
-  document.getElementById('irony').innerHTML = `Irony score: ${res.irony}`
-  document.getElementById('confidence').innerHTML = `Confidence score: ${res.confidence}`
+  document.getElementById('agreement').innerHTML = `Agreement score: ${newsData.agreement}`
+  document.getElementById('subjectivity').innerHTML = `Subjectivity score: ${newsData.subjectivity}`
+  document.getElementById('irony').innerHTML = `Irony score: ${newsData.irony}`
+  document.getElementById('confidence').innerHTML = `Confidence score: ${newsData.confidence}`
 }
 
 
