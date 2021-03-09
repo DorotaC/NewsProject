@@ -10,7 +10,6 @@ import './styles/header.scss'
 
 
 export {
-  //checkForName,
   handleSubmit,
   urlToAnalyze,
   updateUI,
