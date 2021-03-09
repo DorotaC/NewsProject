@@ -1,6 +1,7 @@
-//import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
-import { urlToAnalyze } from './js/formHandler'
+import { urlToAnalyze } from './js/urlToAnalyze'
+import { updateUI } from './js/updateUI'
+import { postURL } from './js/postURL'
 import './styles/resets.scss'
 import './styles/base.scss'
 import './styles/footer.scss'
@@ -8,11 +9,10 @@ import './styles/form.scss'
 import './styles/header.scss'
 
 
-// alert("I EXIST")
-// console.log("CHANGE!!");
-
 export {
   //checkForName,
   handleSubmit,
-  urlToAnalyze
+  urlToAnalyze,
+  updateUI,
+  postURL
 }
