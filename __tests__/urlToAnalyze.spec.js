@@ -5,15 +5,13 @@ describe("URL checker", () => {
     const input = [
        'http://bla-bla.com/',
        'HTTP://BLA-BLA.com/',
-       // 'http://bla-bla.com/',
-       // 'HTTPS://BLA-BLA.com/',
-       // 'HYPS://BLA-BLA.com/',
-       // 'other text'
+       'https://bla-bla.com/',
+       'HTTPS://BLA-BLA.com/',
+       'HYPS://BLA-BLA.com/',
+       'other text'
     ]
     const output = [
-      true,
-      true,
-      //true, true, false, false
+      true, true, true, true, false, false
     ]
     for (let i = 0; i < input.length; i++){
       expect(urlToAnalyze(input[i])).toEqual(output[i])
