@@ -2,6 +2,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-image: linear-gradient(60deg, #216c7c, #89c0cc);
+    font-family: 'Signika', sans-serif;
 }
 
 main {
@@ -11,4 +13,13 @@ main {
 section {
     max-width: 800px;
     margin: 50px auto;
+    background-color: #faf6f0;
+}
+
+#results {
+  padding: 40px;
+}
+
+li {
+  padding: 10px;
 }
